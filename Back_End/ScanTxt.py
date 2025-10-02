@@ -1,20 +1,15 @@
 # 导入Data类
 from Data import Data
-from fastapi import UploadFile
 
 # 创建一个扫描TXT文件的类
 class ScanTxt:
 
     # 构造函数
-    def __init__(self, file):
-        self.file = file
+    def __init__(self):
+        pass
 
     # TXT文件扫描 
     def txtProcessor(self, txtContent):
-
-        # # 读取网络二进制编码并解码
-        # file = (await file.read()).decode("UTF-8")
-        # await file.close()
 
         # 处理查找到的字符串
         def processStr(oldStr):

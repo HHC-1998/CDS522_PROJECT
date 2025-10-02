@@ -28,14 +28,20 @@ def AITalk(question : str = Query(None)):
 # TXT文件交互链接
 @application.post("/filetxt")
 async def TaskTxt(File : UploadFile = File(None)):
-    return ScanTxt(File).txtProcessor()
+    # 将二进制文件转化为文本文件并输出
+    file = (await File.read()).decode("UTF-8")
+    await File.close()
+    return ScanTxt().txtProcessor(file)
 
 
 # PDF文件TMO交互链接
 @application.post("/filetmo")
 async def TaskTxt(File : UploadFile = File(None)):
-    ScanTmo(File).tmoProcessor()
-    return "Receive TMO"
+    # 将二进制文件输出
+    file = (await File.read())
+    await File.close()
+    ScanTmo().tmoProcessor(file)
+    return "OK"
 
 
 # PDF文件RCC交互链接
