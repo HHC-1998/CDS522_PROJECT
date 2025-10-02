@@ -3,5 +3,10 @@
     height : 20%;
     border: 1px solid rgb(180, 180, 180);
     position : absolute;
-    top : 0
+    top : 0;
+    /* 背景图片处理 */
+    background-image : url("./image/校标.webp");
+    background-size : 55% 200%;
+    background-repeat : no-repeat;
+    background-position : center
 }
