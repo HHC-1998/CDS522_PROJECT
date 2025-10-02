@@ -1,0 +1,9 @@
+.Record{
+    position : absolute;
+    top : 0;
+    left: 0;
+    width : 70%;
+    height : 80%;
+    background-color: rgba(182, 182, 182, 0.05);
+    border: 1px solid rgb(180, 180, 180);
+}
