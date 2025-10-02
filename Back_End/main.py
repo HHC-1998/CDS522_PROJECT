@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from Data import Data
 from ScanTxt import ScanTxt
+from ScanTmo import ScanTmo
 
 # 初始化
 application = FastAPI()
@@ -16,24 +17,26 @@ application.add_middleware(
     allow_headers=["*"],  
 )
 
+
 # 聊天交互链接
 @application.get("/aitalk")
 def AITalk(question : str = Query(None)):
     print(question)
     return "Can not answer now!"
 
+
 # TXT文件交互链接
 @application.post("/filetxt")
 async def TaskTxt(File : UploadFile = File(None)):
-    # 读取网络二进制编码并解码
-    file = (await File.read()).decode("UTF-8")
-    await File.close()
-    return ScanTxt().txtProcessor(file)
+    return ScanTxt(File).txtProcessor()
+
 
 # PDF文件TMO交互链接
 @application.post("/filetmo")
 async def TaskTxt(File : UploadFile = File(None)):
+    ScanTmo(File).tmoProcessor()
     return "Receive TMO"
+
 
 # PDF文件RCC交互链接
 @application.post("/filercc")

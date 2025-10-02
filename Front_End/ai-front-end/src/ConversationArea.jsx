@@ -84,10 +84,10 @@ export default class ConversationArea extends React.Component{
                     alert("INPUT CORRECT FILE")
                 }
             }
-            this.setState({
-                fileInformation : [],
-                fileName : []
-            })
+            // this.setState({
+            //     fileInformation : [],
+            //     fileName : []
+            // })
         } 
         // 发送用户想咨询的问题
         else {

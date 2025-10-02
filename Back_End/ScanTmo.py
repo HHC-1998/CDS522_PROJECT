@@ -5,10 +5,9 @@ from Data import Data
 class ScanTmo:
 
     # 构造函数
-    def __init__(self):
-        pass
+    def __init__(self, file):
+        self.file = file
 
     # TXT文件扫描 
     def tmoProcessor(self):
-        pass
-
+        print()
