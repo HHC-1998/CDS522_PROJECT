@@ -2,23 +2,16 @@ import React from "react";
 import "./ConversationRecord.css"
 
 export default class ConversationRecord extends React.Component{
-
-    constructor(){
-        super();
-        this.state={
-            textList : []
-        }
-    }
-
-
     render(){
+
+        // 接受从父组件传来的列表信息
+        const dialog = this.props.dialogData
+
         return(
             <div className="Record">
-
-                {this.state.textList.map((text, index) => {
-                    return <div key={index}> {text} </div>
+                {dialog.map((text, index) => {
+                    return <p className="QandA" key={index}> {text} </p>
                 })}
-
             </div>
         )
     }

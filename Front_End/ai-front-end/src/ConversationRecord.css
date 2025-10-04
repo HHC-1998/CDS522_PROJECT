@@ -6,6 +6,18 @@
     height : 80%;
     background-color: rgba(182, 182, 182, 0.05);
     border: 1px solid rgb(180, 180, 180);
-    overflow : auto;
+    overflow-x : hidden;
+    overflow-y: auto;
+    white-space : normal;
 }
 
+.QandA{
+    min-height : 30px;
+    height : auto;
+    width : 100%;
+    font-size : large;
+    white-space : normal;
+    overflow-wrap : break-word;
+    margin : 8px 0;
+    position : relative;
+}

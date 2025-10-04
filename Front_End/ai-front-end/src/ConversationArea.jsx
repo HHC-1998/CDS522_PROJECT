@@ -7,8 +7,7 @@ import ConversationRecord from "./ConversationRecord"
 
 export default class ConversationArea extends React.Component{
 
-    userQuestion = ""
-    isDisabled = false
+    dialogList = []
 
     // 构造函数
     constructor(){
@@ -17,7 +16,8 @@ export default class ConversationArea extends React.Component{
             userAsk : "",
             fileInformation : [],
             fileName : [],
-            receivedFileData : []
+            receivedFileData : [],
+            dialogRecord : []
         }
     }
 
@@ -85,48 +85,62 @@ export default class ConversationArea extends React.Component{
         } 
         // 发送用户想咨询的问题
         else {
-            this.userQuestion = this.state.userAsk
-            console.log("User ask: " + this.userQuestion)
-            fetch('http://localhost:8000/aitalk?question=' + this.userQuestion, 
-            {
-                method: 'Get',
-                headers: { 'Content-Type': 'application/json' }
-            })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-            })
-            .catch(error => {
-                console.log(error);
-            })
+            this.questionSender()
         }
     }
 
+    // 问题传输功能
+    questionSender = () => {
+        // 将用户的问题存入列表以便显示
+        this.dialogList.push("Q : " + this.state.userAsk)
+        this.setState({
+            dialogRecord : this.dialogList
+        })
+        // 发送用户的问题到后端
+        fetch('http://localhost:8000/aitalk?question=' + this.state.userAsk, 
+        {
+            method: 'Get',
+            headers: { 'Content-Type': 'application/json' }
+        })
+        .then(res => res.json())
+        .then(data => {
+            // 将AI回复的问题存入列表以便显示
+            this.dialogList.push("A : " + data)
+            this.setState({
+                dialogRecord : this.dialogList
+            })
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    } 
+
+    // 文件传输功能
     fileSender = (str) => {
         // 将传入的文件封装起来以便于传输
         const formData = new FormData()
         formData.append("File", this.state.fileInformation)
         // 传输txt文件
         fetch('http://localhost:8000/' + str, 
-                {
-                    method: 'POST',
-                    body : formData
-                })
-                .then(res => res.json())
-                .then(data => {
-                    this.setState(ps => ({
-                        receivedFileData : data
-                    }))
-                })
-                .catch(error => {console.log(error);})
+        {
+            method: 'POST',
+            body : formData
+        })
+        .then(res => res.json())
+        .then(data => {
+            this.setState({
+                receivedFileData : data
+            })
+        })
+        .catch(error => {console.log(error);})
     }
 
     render(){
         return(
         <div className="ConversationAreaDiv"> {/*对话框所在容器*/}
 
-            <FileArea fileData={this.state.receivedFileData}></FileArea>
-            <ConversationRecord></ConversationRecord>
+            <FileArea fileData={this.state.receivedFileData}></FileArea> {/*显示文件信息*/}
+            <ConversationRecord dialogData={this.state.dialogRecord}></ConversationRecord> {/*显示对话信息*/}
 
             <div className="TextAndSend"> {/*输入框与发送按钮表单所在容器*/}
                 <form onSubmit={this.submitQuestion}> {/*表单*/}
