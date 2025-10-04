@@ -72,8 +72,8 @@ export default class ConversationArea extends React.Component{
             } else {
                 if(this.state.fileInformation.name.slice(0, 3) === "ASD"){ // PDF文件TMO类型
                     this.fileSender("filetmo")
-                } else if(0) {
-
+                } else if(this.state.fileInformation.name.slice(0, 3) === "RCC") {
+                    this.fileSender("filercc")
                 } else {
                     alert("INPUT CORRECT FILE")
                 }

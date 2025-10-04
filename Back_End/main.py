@@ -4,6 +4,7 @@ import uvicorn
 from Data import Data
 from ScanTxt import ScanTxt
 from ScanTmo import ScanTmo
+from ScanRcc import ScanRcc
 
 # 初始化
 application = FastAPI()
@@ -38,16 +39,18 @@ async def TaskTxt(File : UploadFile = File(None)):
 @application.post("/filetmo")
 async def TaskTxt(File : UploadFile = File(None)):
     # 将二进制文件输出
-    file = (await File.read())
+    file = await File.read()
     await File.close()
-    ScanTmo().tmoProcessor(file)
-    return "OK"
+    return ScanTmo().tmoProcessor(file)
 
 
 # PDF文件RCC交互链接
 @application.post("/filercc")
-async def TaskTxt(txtFile : UploadFile = File(None)):
-    return "Receive RCC"
+async def TaskTxt(File : UploadFile = File(None)):
+    # 将二进制文件输出
+    file = await File.read()
+    await File.close()
+    return ScanRcc().rccProcessor(file)
 
 
 if __name__ == "__main__":
