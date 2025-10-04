@@ -17,7 +17,7 @@ export default class ConversationArea extends React.Component{
             userAsk : "",
             fileInformation : [],
             fileName : [],
-            receivedData : []
+            receivedFileData : []
         }
     }
 
@@ -57,12 +57,6 @@ export default class ConversationArea extends React.Component{
             fileInformation : [],
             fileName : []
         })
-    }
-
-    // 提交表单
-    submitQuestion = (event) => {
-        event.preventDefault()
-        event.stopPropagation()
     }
 
     // 点击发送
@@ -120,11 +114,9 @@ export default class ConversationArea extends React.Component{
                 })
                 .then(res => res.json())
                 .then(data => {
-                    this.setState({
-                        receivedData : data
-                    }, () => {
-                        console.log(this.state.receivedData);
-                    })
+                    this.setState(ps => ({
+                        receivedFileData : data
+                    }))
                 })
                 .catch(error => {console.log(error);})
     }
@@ -133,7 +125,7 @@ export default class ConversationArea extends React.Component{
         return(
         <div className="ConversationAreaDiv"> {/*对话框所在容器*/}
 
-            <FileArea></FileArea>
+            <FileArea fileData={this.state.receivedFileData}></FileArea>
             <ConversationRecord></ConversationRecord>
 
             <div className="TextAndSend"> {/*输入框与发送按钮表单所在容器*/}

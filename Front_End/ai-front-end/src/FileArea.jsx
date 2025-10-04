@@ -3,13 +3,17 @@ import "./FileArea.css"
 
 export default class FileArea extends React.Component{
     render(){
+
+        // 接受从父组件传来的数据并解构
+        const {fileData} = this.props
+
         return(
         <div className = "FileAreaDiv"> 
 
             <h1>Complaint Information Form</h1>
             <p>Date Received :</p> 
             <p style={{width:"20%", display:"inline"}}>Source :</p>
-            <p style={{width:"60%", display:"inline"}}># </p>
+            <p style={{width:"60%", display:"inline"}}>#</p>
             <p>Type :</p>
             <p>Name of Caller :</p>
             <p>Contact No. :</p>
