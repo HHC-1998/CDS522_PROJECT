@@ -28,8 +28,8 @@ def AITalk(question : str = Query(None)):
 # TXT文件交互链接
 @application.post("/filetxt")
 async def TaskTxt(File : UploadFile = File(None)):
-    # 将二进制文件转化为文本文件并输出
-    file = (await File.read()).decode("UTF-8")
+    # 将二进制文件输出
+    file = await File.read()
     await File.close()
     return ScanTxt().txtProcessor(file)
 

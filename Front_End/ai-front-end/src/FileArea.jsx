@@ -11,23 +11,23 @@ export default class FileArea extends React.Component{
         <div className = "FileAreaDiv"> 
 
             <h1>Complaint Information Form</h1>
-            <p>Date Received :</p> 
-            <p style={{width:"20%", display:"inline"}}>Source :</p>
-            <p style={{width:"60%", display:"inline"}}>#</p>
-            <p>Type :</p>
-            <p>Name of Caller :</p>
-            <p>Contact No. :</p>
-            <p>Slope No. :</p>
-            <p>Location :</p>
-            <p>Nature of Request :</p>
-            <p>Subject Matter :</p>
-            <p>10-day Rule Due Date :</p>
-            <p>ICC Interim Reply Due Date :</p>
-            <p>ICC Final Reply Due Date :</p>
-            <p>Works Completion Due Date :</p>
-            <p>Fax to Contractor on :</p>
-            <p>Fax Page(s) 1 + </p>
-            <p>Case Details :</p>
+            <p>Date Received : {fileData.dateReceived}</p> 
+            <p style={{width:"20%", display:"inline"}}>Source : {fileData.source}</p>
+            <p style={{width:"60%", display:"inline"}}># {fileData.hashtag}</p>
+            <p>Type : {fileData.type}</p>
+            <p>Name of Caller : {fileData.nameOfCaller}</p>
+            <p>Contact No. : {fileData.contactNo}</p>
+            <p>Slope No. : {fileData.slopeNo}</p>
+            <p>Location : {fileData.location}</p>
+            <p>Nature of Request : {fileData.natureOfRequest}</p>
+            <p>Subject Matter : {fileData.subjectMatter}</p>
+            <p>10-day Rule Due Date : {fileData.tenDayRuleDueDate}</p>
+            <p>ICC Interim Reply Due Date : {fileData.ICCInterimReplyDueDate}</p>
+            <p>ICC Final Reply Due Date : {fileData.ICCFinalReplyDueDate}</p>
+            <p>Works Completion Due Date : {fileData.worksCompletionDueDate}</p>
+            <p>Fax to Contractor on : {fileData.faxToContractorOn}</p>
+            <p>Fax Page(s) 1 + {fileData.faxPages}</p>
+            <p>Case Details : {fileData.caseDetails}</p>
 
         </div>
         )

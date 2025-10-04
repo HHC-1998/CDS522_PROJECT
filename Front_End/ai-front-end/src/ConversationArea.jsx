@@ -78,11 +78,11 @@ export default class ConversationArea extends React.Component{
                     alert("INPUT CORRECT FILE")
                 }
             }
-            // 当上传成功时，自动清空文件
-            this.setState({
-                fileInformation : [],
-                fileName : []
-            })
+            // // 当上传成功时，自动清空文件
+            // this.setState({
+            //     fileInformation : [],
+            //     fileName : []
+            // })
         } 
         // 发送用户想咨询的问题
         else {
