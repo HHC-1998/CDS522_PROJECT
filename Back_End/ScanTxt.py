@@ -28,16 +28,16 @@ class ScanTxt:
         a, b, c, d, e, f1, f2, g, h, i, j, k, l, m, n, o, p, q = [""] * 18
 
         # 逐行遍历该字符串
-        for i in txtContent.split('\n'):
-            if "Case Creation Date" in i : a = processStr(i).split()[0]      # a
-            if "1823 CASE" in i : c = processStr(i)                          # c
-            if "Last Name" in i : e = processStr(i)                          # e
-            if "Mobile" in i : f1 = processStr(i)                            # f1
-            if "Email Address" in i : f2 = processStr(i)                     # f2
-            if "斜坡編號為" in i : g = i                                      # g
-            if "Re-assignment" in i : k = processStr(i).split()[0]           # k
-            if "Interim Reply" in i : l = processStr(i).split()[0]           # l
-            if "Final Reply" in i : m = processStr(i).split()[0]             # m
+        for str in txtContent.split('\n'):
+            if "Case Creation Date" in str : a = processStr(str).split()[0]      # a
+            if "1823 CASE" in str : c = processStr(str)                          # c
+            if "Last Name" in str : e = processStr(str)                          # e
+            if "Mobile" in str : f1 = processStr(str)                            # f1
+            if "Email Address" in str : f2 = processStr(str)                     # f2
+            if "斜坡編號為" in str : g = str                                      # g
+            if "Re-assignment" in str : k = processStr(str).split()[0]           # k
+            if "Interim Reply" in str : l = processStr(str).split()[0]           # l
+            if "Final Reply" in str : m = processStr(str).split()[0]             # m
 
         # 定义特定的值
         f = f1 + "/" + f2

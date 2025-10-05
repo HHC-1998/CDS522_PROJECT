@@ -24,29 +24,34 @@ class ScanTmo:
 
         # extract_text可以将pdf中的文本信息提取成字符串
         textContent = firstPage.extract_text()
+        print(textContent)
 
         # 需要查找的值
         a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q = [""] * 17
 
-        # # 逐行遍历该字符串
-        # for i in textContent.split('\n'):
-        #     if "Date of Referral" in i : a = i.find("Date of Referral")                   # a
-        #     # if "Slope no." in i : g = processStr(i)                          # g
-        #     # if "Re-assignment" in i : k = processStr(i)                      # k
-        #     # if "Interim Reply" in i : l = processStr(i)                      # l
-        #     # if "Final Reply" in i : m = processStr(i)                        # m
-
-        # # 定义特定的值
-        # d, h, i, j, q, n = ["Null"] * 6
-        # b = "TMO"
-        # c, e, f = ["TMO(DEVB)"] * 3
-        # o = a
-        # p = "Connot Found"
-
-        # # 返回一个数据对象 
-        # extractInfo = Data(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q)
-        # return extractInfo
-        return "TMO OK"
+        # 提取信息字符串的方法
+        def processStr(oldStr, keyName, valueLength):
+            # 通过传入的键名算出键名的长度
+            keyLength = len(keyName.split())
+            # 通过空格分割字符串
+            strList = oldStr.split()
+            # 从中取出值
+            valueList = strList[keyLength : keyLength + valueLength]
+            # 将列表拼接回字符串
+            newStr = " ".join(valueList)
+            return newStr
+                
+        # 便利文件的每一行
+        for str in textContent.split('\n'):
+            a = processStr(str, "Date of Referral ", 3) if "Date of Referral " in str else "Null" 
+            
+        # 定义特定的值
+        d, h, i, j, q= ["Null"] * 5
+        b = "TMO"
+        o = a
+        
+       
+        return "null"
 
 
 

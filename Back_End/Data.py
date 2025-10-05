@@ -1,3 +1,5 @@
+from DataBase import DataBase
+
 # 数据类：所有类型的扫描类都可以调用此类来生成对象（后可连接数据库）
 class Data:
 
@@ -23,6 +25,10 @@ class Data:
         self.faxToContractorOn = faxToContractorOn
         self.faxPages = faxPages
         self.caseDetails = caseDetails
+        # 创建对象的同时将对象信息写入数据库
+        DataBase().addData(dateReceived, source, hashtag, type, nameOfCaller, contactNo, slopeNo, location, natureOfRequest, 
+                          subjectMatter, tenDayRuleDueDate, ICCInterimReplyDueDate, ICCFinalReplyDueDate, worksCompletionDueDate,
+                          faxToContractorOn, faxPages, caseDetails)
 
     # 重写toString方法
     def __str__(self):
