@@ -78,22 +78,25 @@ export default class ConversationArea extends React.Component{
                     alert("INPUT CORRECT FILE")
                 }
             }
-            // // 当上传成功时，自动清空文件
-            // this.setState({
-            //     fileInformation : [],
-            //     fileName : []
-            // })
+            // 当上传成功时，自动清空文件
+            this.setState({
+                fileInformation : [],
+                fileName : []
+            })
         } 
         // 发送用户想咨询的问题
         else {
             this.questionSender()
+            this.setState({
+                userAsk : ""
+            })
         }
     }
 
     // 问题传输功能
     questionSender = () => {
         // 将用户的问题存入列表以便显示
-        this.dialogList.push("Q : " + this.state.userAsk)
+        this.dialogList.push("USER : " + this.state.userAsk)
         this.setState({
             dialogRecord : this.dialogList
         })
@@ -106,7 +109,7 @@ export default class ConversationArea extends React.Component{
         .then(res => res.json())
         .then(data => {
             // 将AI回复的问题存入列表以便显示
-            this.dialogList.push("A : " + data)
+            this.dialogList.push("DEEPSEEK : " + data)
             this.setState({
                 dialogRecord : this.dialogList
             })

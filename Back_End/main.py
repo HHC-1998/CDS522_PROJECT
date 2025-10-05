@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Query, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
-from Data import Data
+from Chat import Chat
 from ScanTxt import ScanTxt
 from ScanTmo import ScanTmo
 from ScanRcc import ScanRcc
@@ -22,8 +22,7 @@ application.add_middleware(
 # 聊天交互链接
 @application.get("/aitalk")
 def AITalk(question : str = Query(None)):
-    print(question)
-    return "Can not answer now!"
+    return Chat().aiTalk(question)
 
 
 # TXT文件交互链接
