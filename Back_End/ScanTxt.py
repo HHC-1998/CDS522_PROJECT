@@ -15,6 +15,8 @@ class ScanTxt:
         # 根据文件不同的编码方式进行解码
         fileDetail = chardet.detect(txtContent)
         txtContent = txtContent.decode(fileDetail["encoding"])
+        # 在控制台显示文本文件
+        print(txtContent)
 
         # 处理查找到的字符串
         def processStr(oldStr):
@@ -25,7 +27,7 @@ class ScanTxt:
                 return "Null"
 
         # 需要查找的值
-        a, b, c, d, e, f1, f2, g, h, i, j, k, l, m, n, o, p, q = [""] * 18
+        a, b, c, d, e, f1, f2, g, h, i, j, k, l, m, n, o, p, q = ["Null"] * 18
 
         # 逐行遍历该字符串
         for str in txtContent.split('\n'):
@@ -41,7 +43,6 @@ class ScanTxt:
 
         # 定义特定的值
         f = f1 + "/" + f2
-        d, h, i, j, q, n = ["Null"] * 6
         b = "ICC"
         o = a
         p = "Connot Found"
