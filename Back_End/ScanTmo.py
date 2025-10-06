@@ -44,16 +44,6 @@ class ScanTmo:
             # 将列表拼接回字符串
             newStr = " ".join(valueList)
             return newStr
-            # # 通过传入的键名算出键名的长度
-            # keyLength = len(keyName.split())
-            # # 通过空格分割字符串
-            # strList = oldStr.split()
-            # # 从中取出值
-            # valueList = strList[keyLength : keyLength + valueLength]
-            # # 将列表拼接回字符串
-            # newStr = " ".join(valueList)
-            # if len(newStr) == 0 : newStr = "Null"
-            # return newStr
 
         # 算出十天之后的日期
         def tenDayLate(nowDate):
